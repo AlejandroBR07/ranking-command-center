@@ -5,7 +5,7 @@ const CONFIG = {
     
     // Timing configurations
     DATA_REFRESH_INTERVAL: 3600 * 1000, // 1 hour
-    VIEW_ROTATION_INTERVAL: 15 * 1000,  // 15 seconds
+    VIEW_ROTATION_INTERVAL: 12 * 1000,  // 12 seconds (teste de deploy)
     
     // Currency formatting - Changed to USD
     CURRENCY_CONFIG: {
