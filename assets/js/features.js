@@ -11,8 +11,12 @@ class CommandCenterFeatures {
         };
     }
 
-    // Enhanced notification system
+    // Enhanced notification system - prevent duplicates and use platform colors
     showNotification(message, type = 'info', duration = 3000) {
+        // Remove any existing notifications to prevent duplicates
+        const existingNotifications = document.querySelectorAll('.notification');
+        existingNotifications.forEach(notif => notif.remove());
+        
         const notification = document.createElement('div');
         notification.className = `notification ${type}`;
         notification.innerHTML = `
@@ -205,14 +209,7 @@ class CommandCenterFeatures {
         this.setupKeyboardShortcuts();
         this.monitorConnection();
         
-        // Add fullscreen button to UI
-        this.addFullscreenButton();
-        
-        // Add export button
-        this.addExportButton();
-        
-        // Add theme selector
-        this.addThemeSelector();
+        // Don't add duplicate buttons - they're already in the UI
         
         this.showNotification('Command Center Enhanced - Recursos avançados ativados', 'success');
     }

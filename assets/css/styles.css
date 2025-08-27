@@ -79,15 +79,18 @@ body {
     position: fixed;
     top: 20px;
     right: 20px;
-    padding: 16px 24px;
-    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(15, 18, 32, 0.95), rgba(30, 41, 59, 0.95));
     color: white;
-    font-weight: 600;
-    z-index: 1000;
-    transform: translateX(400px);
-    transition: transform 0.3s ease-in-out;
+    padding: 16px 20px;
+    border-radius: 12px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+    max-width: 350px;
+    font-size: 14px;
 }
 
 .notification.show {
@@ -95,18 +98,21 @@ body {
 }
 
 .notification.success {
-    background: linear-gradient(135deg, var(--success-color), #059669);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(15, 18, 32, 0.95));
+    border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 .notification.warning {
-    background: linear-gradient(135deg, var(--warning-color), #D97706);
+    background: linear-gradient(135deg, rgba(217, 119, 6, 0.2), rgba(15, 18, 32, 0.95));
+    border: 1px solid rgba(217, 119, 6, 0.3);
 }
 
 .notification.error {
-    background: linear-gradient(135deg, var(--danger-color), #DC2626);
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.2), rgba(15, 18, 32, 0.95));
+    border: 1px solid rgba(220, 38, 38, 0.3);
 }
 
-/* TESTE DE DEPLOY - Enhanced KPI cards - horizontal layout */
+/* Enhanced KPI cards - horizontal layout */
 .kpi-card {
     background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(16, 185, 129, 0.1));
     border: 1px solid rgba(56, 189, 248, 0.2);
