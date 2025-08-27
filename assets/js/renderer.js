@@ -26,12 +26,12 @@ class Renderer {
                             }
                         </div>
                     </div>
-                    <div class="space-y-4">
-                        <div class="bg-black/30 rounded-xl border border-blue-500/20 kpi-card">
+                    <div class="flex flex-col w-full space-y-4">
+                        <div class="w-full bg-black/30 rounded-xl border border-blue-500/20 kpi-card">
                             <p class="kpi-label">Total em Depósitos</p>
                             <p class="currency-value text-blue-400">${RankingUtils.formatCurrency(dg.totalDeposito)}</p>
                         </div>
-                        <div class="bg-black/30 rounded-xl border border-teal-500/20 kpi-card">
+                        <div class="w-full bg-black/30 rounded-xl border border-teal-500/20 kpi-card">
                             <p class="kpi-label">Ativações</p>
                             <p class="kpi-value text-teal-400">${dg.activationCount}</p>
                         </div>
@@ -51,12 +51,12 @@ class Renderer {
                             }
                         </div>
                     </div>
-                    <div class="space-y-4">
-                        <div class="bg-black/30 rounded-xl border border-blue-500/20 kpi-card">
+                    <div class="flex flex-col w-full space-y-4">
+                        <div class="w-full bg-black/30 rounded-xl border border-blue-500/20 kpi-card">
                             <p class="kpi-label">Total em Depósitos</p>
                             <p class="currency-value text-blue-400">${RankingUtils.formatCurrency(es.totalDeposito)}</p>
                         </div>
-                        <div class="bg-black/30 rounded-xl border border-teal-500/20 kpi-card">
+                        <div class="w-full bg-black/30 rounded-xl border border-teal-500/20 kpi-card">
                             <p class="kpi-label">Ativações</p>
                             <p class="kpi-value text-teal-400">${es.activationCount}</p>
                         </div>
