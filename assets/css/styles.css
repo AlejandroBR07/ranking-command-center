@@ -112,23 +112,23 @@ body {
     border: 1px solid rgba(56, 189, 248, 0.25);
 }
 
-/* Enhanced KPI cards - horizontal layout */
+/* Enhanced KPI cards - vertical layout */
 .kpi-card {
     background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(16, 185, 129, 0.1));
     border: 1px solid rgba(56, 189, 248, 0.2);
     border-radius: 16px;
-    padding: 16px 20px;
-    text-align: left;
-    transition: all 0.3s ease;
+    padding: 1.5rem;
     position: relative;
     overflow: hidden;
-    min-height: 80px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    flex: 1;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+    display: block !important;
+    float: none !important;
+    clear: both !important;
+    text-align: center;
 }
 
 /* Currency values - horizontal layout styling */

@@ -26,15 +26,16 @@ class Renderer {
                             }
                         </div>
                     </div>
-                    <div class="flex flex-col w-full space-y-4">
-                        <div class="w-full bg-black/30 rounded-xl border border-blue-500/20 kpi-card">
-                            <p class="kpi-label">Total em Depósitos</p>
-                            <p class="currency-value text-blue-400">${RankingUtils.formatCurrency(dg.totalDeposito)}</p>
+                    <div class="kpi-container" style="display: block; width: 100%;">
+                        <div class="kpi-card" style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem; width: 100%; display: block; float: none; clear: both;">
+                            <p class="kpi-label" style="color: #9CA3AF; margin: 0 0 0.5rem 0; font-size: 0.875rem;">Total em Depósitos</p>
+                            <p class="currency-value" style="font-size: 1.8rem; font-weight: 900; color: #3B82F6; margin: 0;">${RankingUtils.formatCurrency(dg.totalDeposito)}</p>
                         </div>
-                        <div class="w-full bg-black/30 rounded-xl border border-teal-500/20 kpi-card">
-                            <p class="kpi-label">Ativações</p>
-                            <p class="kpi-value text-teal-400">${dg.activationCount}</p>
+                        <div class="kpi-card" style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 16px; padding: 1.5rem; width: 100%; display: block; float: none; clear: both;">
+                            <p class="kpi-label" style="color: #9CA3AF; margin: 0 0 0.5rem 0; font-size: 0.875rem;">Ativações</p>
+                            <p class="kpi-value" style="font-size: 1.8rem; font-weight: 900; color: #10B981; margin: 0;">${dg.activationCount}</p>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -51,15 +52,16 @@ class Renderer {
                             }
                         </div>
                     </div>
-                    <div class="flex flex-col w-full space-y-4">
-                        <div class="w-full bg-black/30 rounded-xl border border-blue-500/20 kpi-card">
-                            <p class="kpi-label">Total em Depósitos</p>
-                            <p class="currency-value text-blue-400">${RankingUtils.formatCurrency(es.totalDeposito)}</p>
+                    <div class="kpi-container" style="display: block; width: 100%;">
+                        <div class="kpi-card" style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem; width: 100%; display: block; float: none; clear: both;">
+                            <p class="kpi-label" style="color: #9CA3AF; margin: 0 0 0.5rem 0; font-size: 0.875rem;">Total em Depósitos</p>
+                            <p class="currency-value" style="font-size: 1.8rem; font-weight: 900; color: #3B82F6; margin: 0;">${RankingUtils.formatCurrency(es.totalDeposito)}</p>
                         </div>
-                        <div class="w-full bg-black/30 rounded-xl border border-teal-500/20 kpi-card">
-                            <p class="kpi-label">Ativações</p>
-                            <p class="kpi-value text-teal-400">${es.activationCount}</p>
+                        <div class="kpi-card" style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 16px; padding: 1.5rem; width: 100%; display: block; float: none; clear: both;">
+                            <p class="kpi-label" style="color: #9CA3AF; margin: 0 0 0.5rem 0; font-size: 0.875rem;">Ativações</p>
+                            <p class="kpi-value" style="font-size: 1.8rem; font-weight: 900; color: #10B981; margin: 0;">${es.activationCount}</p>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
