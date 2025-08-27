@@ -90,17 +90,36 @@
     <script src="assets/js/app.js"></script>
     
     <script>
+        // Prevent double initialization
+        let isInitialized = false;
+        
         // Initialize the application
         document.addEventListener('DOMContentLoaded', function() {
+            if (isInitialized) {
+                console.warn('🚫 DUPLICATE INITIALIZATION PREVENTED - App already initialized');
+                return;
+            }
+            
             try {
-                console.log('DOM loaded, initializing app...');
+                console.log('🚀 DOM loaded, initializing app...');
+                console.log('📍 Initialization timestamp:', new Date().toISOString());
+                console.log('📍 Document ready state:', document.readyState);
+                
+                isInitialized = true;
                 const app = new RankingApp();
                 app.initialize();
+                
+                console.log('✅ App initialization completed successfully');
             } catch (error) {
-                console.error('Failed to create or initialize app:', error);
+                console.error('❌ Failed to create or initialize app:', error);
                 console.error('Error stack:', error.stack);
+                isInitialized = false; // Reset on error
             }
         });
+        
+        // Additional debug info
+        console.log('📋 Script loaded at:', new Date().toISOString());
+        console.log('📋 Document ready state at script load:', document.readyState);
     </script>
 
 </body>

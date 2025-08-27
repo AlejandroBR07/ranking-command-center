@@ -2,26 +2,31 @@
 
 class RankingApp {
     constructor() {
+        console.log('🏗️ RankingApp constructor called');
+        console.log('🏗️ Constructor timestamp:', new Date().toISOString());
+        console.log('🏗️ Existing window.app instance:', !!window.app);
+        
+        // Prevent multiple instances
+        if (window.app && window.app.initialized) {
+            console.warn('🚫 RankingApp instance already exists and is initialized');
+            return window.app;
+        }
+        
+        this.currentViewIndex = 0;
+        this.views = ['view-teams', 'view-leaderboard', 'view-chart'];
+        this.currentPeriod = 'all';
+        this.currentRankingType = 'value';
+        this.isPaused = false;
+        this.rotationTimeoutId = null;
+        this.rotationRemainingTime = CONFIG.VIEW_ROTATION_INTERVAL;
+        this.rotationStartTime = 0;
+        this.animationFrameId = null;
+        this.countdownIntervalId = null;
+        this.initialized = false;
+        
         this.dataProcessor = new DataProcessor();
         this.renderer = new Renderer();
-        this.currentViewIndex = 0;
-        this.currentRankingType = 'value';
-        this.currentPeriod = 'all';
-        this.isPaused = false;
-        this.rotationStartTime = 0;
-        this.rotationRemainingTime = CONFIG.VIEW_ROTATION_INTERVAL;
-        this.views = ['view-teams', 'view-leaderboard', 'view-chart'];
         
-        // Timers and intervals
-        this.dataRefreshIntervalId = null;
-        this.countdownIntervalId = null;
-        this.rotationTimeoutId = null;
-        this.animationFrameId = null;
-        
-        this.initializeDOM();
-    }
-
-    initializeDOM() {
         this.DOM = {
             commandCenter: document.getElementById('command-center'),
             loader: document.getElementById('loader'),
@@ -41,36 +46,44 @@ class RankingApp {
     }
 
     async initialize() {
+        if (this.initialized) {
+            console.warn('🚫 INITIALIZE CALLED ON ALREADY INITIALIZED APP');
+            return;
+        }
+        
         try {
-            console.log('Starting Command Center initialization...');
-            this.renderer.showLoader('Iniciando Command Center...');
+            console.log('🚀 Starting Command Center initialization...');
+            console.log('🔍 Initialize method timestamp:', new Date().toISOString());
             
-            console.log('Creating particles...');
+            this.initialized = true;
+            
+            console.log('✨ Creating particles...');
             RankingUtils.createParticles();
             
-            console.log('Fetching initial data...');
+            console.log('📡 Fetching initial data...');
             await this.fetchDataAndUpdate(true);
             
-            console.log('Setting up event listeners...');
+            console.log('🎛️ Setting up event listeners...');
             this.setupEventListeners();
             
-            console.log('Showing initial view...');
+            console.log('👁️ Showing initial view...');
             this.showView(0);
             
-            console.log('Starting rotation...');
+            console.log('🔄 Starting rotation...');
             this.startRotation();
             
-            console.log('Hiding loader...');
+            console.log('🫥 Hiding loader...');
             this.renderer.hideLoader();
             
             // Initialize enhanced features first (without notification)
-            console.log('Initializing enhanced features...');
+            console.log('⚡ Initializing enhanced features...');
             if (window.commandCenterFeatures) {
                 window.commandCenterFeatures.initSilent();
             }
             
             // Show single startup notification after delay
             setTimeout(() => {
+                console.log('💬 Showing delayed startup notification...');
                 RankingUtils.showNotification(
                     'Sistema Iniciado!', 
                     'Centro de Comandos de Rankings está funcionando', 
@@ -79,8 +92,9 @@ class RankingApp {
             }, 1000);
             
             // Expose app instance globally for features
-            console.log('Exposing app globally...');
+            console.log('🌐 Exposing app globally...');
             window.app = {
+                initialized: true,
                 isPaused: this.isPaused,
                 pauseRotation: () => this.pauseRotation(),
                 resumeRotation: () => this.resumeRotation(),
@@ -90,22 +104,19 @@ class RankingApp {
                 rawData: this.dataProcessor.rawData
             };
             
-            console.log('Command Center initialization completed successfully!');
+            console.log('✅ Command Center initialization completed successfully!');
             
         } catch (error) {
-            console.error('Failed to initialize Command Center:', error);
+            console.error('❌ Failed to initialize Command Center:', error);
             console.error('Error details:', {
                 message: error.message,
                 stack: error.stack,
                 name: error.name
             });
             
-            // Try to show a basic error message
-            const loader = document.getElementById('loader');
-            if (loader) {
-                loader.innerHTML = '<p class="text-red-400 text-lg">Erro na inicialização. Verifique o console.</p>';
-            }
+            this.initialized = false; // Reset on error
             
+            // Show error notification
             if (window.commandCenterFeatures) {
                 window.commandCenterFeatures.showNotification('Erro ao inicializar o sistema', 'error');
             }
