@@ -26,7 +26,7 @@ class Renderer {
                             }
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 gap-4">
+                    <div class="grid grid-cols-2 gap-4">
                         <div class="bg-black/30 rounded-xl border border-blue-500/20 kpi-card">
                             <p class="kpi-label">Total em Depósitos</p>
                             <p class="currency-value text-blue-400">${RankingUtils.formatCurrency(dg.totalDeposito)}</p>
@@ -34,10 +34,6 @@ class Renderer {
                         <div class="bg-black/30 rounded-xl border border-teal-500/20 kpi-card">
                             <p class="kpi-label">Ativações</p>
                             <p class="kpi-value text-teal-400">${dg.activationCount}</p>
-                        </div>
-                        <div class="bg-black/30 rounded-xl border border-purple-500/20 kpi-card">
-                            <p class="kpi-label">Ticket Médio</p>
-                            <p class="kpi-value text-purple-400">${RankingUtils.formatCurrency(dg.conversionRate || 0)}</p>
                         </div>
                     </div>
                 </div>
@@ -55,7 +51,7 @@ class Renderer {
                             }
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 gap-4">
+                    <div class="grid grid-cols-2 gap-4">
                         <div class="bg-black/30 rounded-xl border border-blue-500/20 kpi-card">
                             <p class="kpi-label">Total em Depósitos</p>
                             <p class="currency-value text-blue-400">${RankingUtils.formatCurrency(es.totalDeposito)}</p>
@@ -63,10 +59,6 @@ class Renderer {
                         <div class="bg-black/30 rounded-xl border border-teal-500/20 kpi-card">
                             <p class="kpi-label">Ativações</p>
                             <p class="kpi-value text-teal-400">${es.activationCount}</p>
-                        </div>
-                        <div class="bg-black/30 rounded-xl border border-purple-500/20 kpi-card">
-                            <div class="kpi-label">Ticket Médio</div>
-                            <div class="kpi-value currency-value">${RankingUtils.formatCurrency(kpis.conversionRate || 0)}</div>
                         </div>
                     </div>
                 </div>

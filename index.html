@@ -90,40 +90,20 @@
     <script src="assets/js/app.js"></script>
     
     <script>
-        // Single initialization using immediate execution
-        (function() {
-            if (window.rankingAppInitialized) {
-                console.warn('🚫 SCRIPT ALREADY EXECUTED - Preventing duplicate execution');
+        // Single initialization using DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.appInstance) {
+                console.log('App already initialized');
                 return;
             }
             
-            window.rankingAppInitialized = true;
-            console.log('📋 Script executing at:', new Date().toISOString());
-            
-            function initializeApp() {
-                if (window.appInstance) {
-                    console.warn('🚫 APP INSTANCE ALREADY EXISTS');
-                    return;
-                }
-                
-                try {
-                    console.log('🚀 Initializing single app instance...');
-                    window.appInstance = new RankingApp();
-                    window.appInstance.initialize();
-                    console.log('✅ Single app initialization completed');
-                } catch (error) {
-                    console.error('❌ App initialization failed:', error);
-                    window.appInstance = null;
-                    window.rankingAppInitialized = false;
-                }
+            try {
+                window.appInstance = new RankingApp();
+                window.appInstance.initialize();
+            } catch (error) {
+                console.error('Failed to initialize app:', error);
             }
-            
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initializeApp, { once: true });
-            } else {
-                initializeApp();
-            }
-        })();
+        }, { once: true });
     </script>
 
 </body>
