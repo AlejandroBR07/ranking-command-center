@@ -89,22 +89,7 @@
     <script src="assets/js/features.js"></script>
     <script src="assets/js/app.js"></script>
     
-    <script>
-        // Single initialization using DOMContentLoaded
-        document.addEventListener('DOMContentLoaded', function() {
-            if (window.appInstance) {
-                console.log('App already initialized');
-                return;
-            }
-            
-            try {
-                window.appInstance = new RankingApp();
-                window.appInstance.initialize();
-            } catch (error) {
-                console.error('Failed to initialize app:', error);
-            }
-        }, { once: true });
-    </script>
+    <!-- App initialization is handled in app.js -->
 
 </body>
 </html>

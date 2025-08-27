@@ -425,9 +425,11 @@ class RankingApp {
 
 // Initialize the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    window.rankingApp = new RankingApp();
-    window.rankingApp.initialize();
-});
+    if (!window.rankingApp) {
+        window.rankingApp = new RankingApp();
+        window.rankingApp.initialize();
+    }
+}, { once: true });
 
 // Handle page unload
 window.addEventListener('beforeunload', () => {

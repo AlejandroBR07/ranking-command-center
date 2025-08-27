@@ -26,7 +26,7 @@ class Renderer {
                             }
                         </div>
                     </div>
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
                         <div class="bg-black/30 rounded-xl border border-blue-500/20 kpi-card">
                             <p class="kpi-label">Total em Depósitos</p>
                             <p class="currency-value text-blue-400">${RankingUtils.formatCurrency(dg.totalDeposito)}</p>
@@ -51,7 +51,7 @@ class Renderer {
                             }
                         </div>
                     </div>
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
                         <div class="bg-black/30 rounded-xl border border-blue-500/20 kpi-card">
                             <p class="kpi-label">Total em Depósitos</p>
                             <p class="currency-value text-blue-400">${RankingUtils.formatCurrency(es.totalDeposito)}</p>
