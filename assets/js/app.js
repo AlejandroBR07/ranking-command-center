@@ -63,18 +63,20 @@ class RankingApp {
             console.log('Hiding loader...');
             this.renderer.hideLoader();
             
-            console.log('Showing success notification...');
-            RankingUtils.showNotification(
-                'Sistema Iniciado!', 
-                'Centro de Comandos de Rankings está funcionando', 
-                'success'
-            );
-            
-            // Initialize enhanced features
+            // Initialize enhanced features first (without notification)
             console.log('Initializing enhanced features...');
             if (window.commandCenterFeatures) {
-                window.commandCenterFeatures.init();
+                window.commandCenterFeatures.initSilent();
             }
+            
+            // Show single startup notification after delay
+            setTimeout(() => {
+                RankingUtils.showNotification(
+                    'Sistema Iniciado!', 
+                    'Centro de Comandos de Rankings está funcionando', 
+                    'success'
+                );
+            }, 1000);
             
             // Expose app instance globally for features
             console.log('Exposing app globally...');

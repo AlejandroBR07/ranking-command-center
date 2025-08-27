@@ -98,18 +98,18 @@ body {
 }
 
 .notification.success {
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(15, 18, 32, 0.95));
-    border: 1px solid rgba(16, 185, 129, 0.3);
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(15, 18, 32, 0.95));
+    border: 1px solid rgba(56, 189, 248, 0.4);
 }
 
 .notification.warning {
-    background: linear-gradient(135deg, rgba(217, 119, 6, 0.2), rgba(15, 18, 32, 0.95));
-    border: 1px solid rgba(217, 119, 6, 0.3);
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(15, 18, 32, 0.95));
+    border: 1px solid rgba(56, 189, 248, 0.3);
 }
 
 .notification.error {
-    background: linear-gradient(135deg, rgba(220, 38, 38, 0.2), rgba(15, 18, 32, 0.95));
-    border: 1px solid rgba(220, 38, 38, 0.3);
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(15, 18, 32, 0.95));
+    border: 1px solid rgba(56, 189, 248, 0.25);
 }
 
 /* Enhanced KPI cards - horizontal layout */

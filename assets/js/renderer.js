@@ -380,7 +380,7 @@ class Renderer {
             }
             
             const minutes = Math.floor(secondsLeft / 60);
-            const seconds = secondsLeft % 60;
+            const seconds = Math.floor(secondsLeft % 60);
             timer.textContent = `Próxima atualização: ${minutes}m ${seconds.toString().padStart(2, '0')}s`;
         }
     }

@@ -204,14 +204,36 @@ class CommandCenterFeatures {
         });
     }
 
-    // Initialize all features
-    init() {
+    // Initialize all features silently
+    initSilent() {
         this.setupKeyboardShortcuts();
         this.monitorConnection();
         
-        // Don't add duplicate buttons - they're already in the UI
-        
+        // Remove any existing duplicate buttons
+        this.removeDuplicateButtons();
+    }
+    
+    // Initialize with notification (legacy)
+    init() {
+        this.initSilent();
         this.showNotification('Command Center Enhanced - Recursos avançados ativados', 'success');
+    }
+    
+    // Remove duplicate buttons that might have been added
+    removeDuplicateButtons() {
+        const refreshBtn = document.getElementById('refresh-btn');
+        if (refreshBtn && refreshBtn.parentNode) {
+            const siblings = refreshBtn.parentNode.children;
+            for (let i = siblings.length - 1; i >= 0; i--) {
+                const sibling = siblings[i];
+                if (sibling !== refreshBtn && sibling.tagName === 'BUTTON' && sibling.innerHTML.includes('svg')) {
+                    sibling.remove();
+                }
+                if (sibling.tagName === 'SELECT') {
+                    sibling.remove();
+                }
+            }
+        }
     }
 
     addFullscreenButton() {
