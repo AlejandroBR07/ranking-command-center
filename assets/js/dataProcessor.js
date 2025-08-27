@@ -189,18 +189,25 @@ class DataProcessor {
             const teamMembers = CONFIG.TEAMS[team] || [];
             kpis[team].memberCount = teamMembers.length;
             
-            // Calculate conversion rate (activations / total deposits * 100)
+            // Calculate average deposit per member (more meaningful than conversion rate)
             const teamDeposits = data.filter(item => {
                 const depositValue = RankingUtils.parseCurrency(RankingUtils.getValue(item, 'Valor Depósito'));
                 return item.team === team && depositValue > 0;
             });
             
-            // Ensure conversionRate is always a number
-            if (teamDeposits.length > 0 && kpis[team].activationCount >= 0) {
-                kpis[team].conversionRate = (kpis[team].activationCount / teamDeposits.length) * 100;
+            // Calculate average deposit per member
+            if (kpis[team].memberCount > 0) {
+                kpis[team].conversionRate = kpis[team].totalDeposito / kpis[team].memberCount;
             } else {
                 kpis[team].conversionRate = 0;
             }
+            
+            console.log(`📊 Team ${team} metrics:`, {
+                totalDeposit: kpis[team].totalDeposito,
+                memberCount: kpis[team].memberCount,
+                avgPerMember: kpis[team].conversionRate,
+                activations: kpis[team].activationCount
+            });
             
             // Ensure all required properties exist
             kpis[team].totalDeposito = kpis[team].totalDeposito || 0;

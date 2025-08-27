@@ -36,8 +36,8 @@ class Renderer {
                             <p class="kpi-value text-teal-400">${dg.activationCount}</p>
                         </div>
                         <div class="bg-black/30 rounded-xl border border-purple-500/20 kpi-card">
-                            <p class="kpi-label">Taxa de Conversão</p>
-                            <p class="kpi-value text-purple-400">${(dg.conversionRate || 0).toFixed(1)}%</p>
+                            <p class="kpi-label">Média por Membro</p>
+                            <p class="kpi-value text-purple-400">${RankingUtils.formatCurrency(dg.conversionRate || 0)}</p>
                         </div>
                     </div>
                 </div>
@@ -65,8 +65,8 @@ class Renderer {
                             <p class="kpi-value text-teal-400">${es.activationCount}</p>
                         </div>
                         <div class="bg-black/30 rounded-xl border border-purple-500/20 kpi-card">
-                            <p class="kpi-label">Taxa de Conversão</p>
-                            <p class="kpi-value text-purple-400">${(es.conversionRate || 0).toFixed(1)}%</p>
+                            <div class="kpi-label">Média por Membro</div>
+                            <div class="kpi-value currency-value">${RankingUtils.formatCurrency(kpis.conversionRate || 0)}</div>
                         </div>
                     </div>
                 </div>
