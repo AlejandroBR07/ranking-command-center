@@ -106,7 +106,7 @@ body {
     background: linear-gradient(135deg, var(--danger-color), #DC2626);
 }
 
-/* Enhanced KPI cards - horizontal layout */
+/* TESTE DE DEPLOY - Enhanced KPI cards - horizontal layout */
 .kpi-card {
     background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(16, 185, 129, 0.1));
     border: 1px solid rgba(56, 189, 248, 0.2);
