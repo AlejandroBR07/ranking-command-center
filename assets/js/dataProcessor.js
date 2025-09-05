@@ -88,16 +88,21 @@ class DataProcessor {
         const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
         const startOfWeek = new Date(today);
         startOfWeek.setDate(today.getDate() - today.getDay() + (today.getDay() === 0 ? -6 : 1));
+        const minDate = new Date(2025, 6, 1); // July 1, 2025
         
         return this.rawData.map(item => ({
             ...item,
             parsedDate: RankingUtils.parseDate(RankingUtils.getValue(item, 'Data')),
             team: RankingUtils.getTeamByBroker(RankingUtils.getValue(item, 'Nome'))
         })).filter(item => {
-            if (!item.parsedDate) return selectedPeriod === 'all';
+            if (!item.parsedDate) return false; // Ignore items without a valid date
             
             const itemDate = new Date(item.parsedDate.getFullYear(), item.parsedDate.getMonth(), item.parsedDate.getDate());
             
+            // Always filter out dates before July 2025
+            if (itemDate < minDate) return false;
+            
+            // Apply the selected period filter
             switch (selectedPeriod) {
                 case 'all':
                     return true;
@@ -161,7 +166,7 @@ class DataProcessor {
     }
 
     calculateTeamKPIs(data) {
-        return data.reduce((acc, item) => {
+        const kpis = data.reduce((acc, item) => {
             if (!acc[item.team]) {
                 acc[item.team] = { 
                     totalDeposito: 0, 
@@ -182,7 +187,7 @@ class DataProcessor {
             }
             
             return acc;
-        }, {});
+        }, { 'DOLLAR GODS': { totalDeposito: 0, activationCount: 0 }, 'ELITE SQUAD': { totalDeposito: 0, activationCount: 0 } });
         
         // Calculate additional metrics
         Object.keys(kpis).forEach(team => {
@@ -235,15 +240,15 @@ class DataProcessor {
         const previousRank = this.previousRankings[rankingType]?.get(brokerName);
         
         if (!previousRank) {
-            return { indicator: '-', class: 'rank-stable', isNew: true };
+            return { indicator: '⭐', class: 'rank-new', isNew: true, change: 0 };
         }
         
         if (currentRank < previousRank) {
             return { indicator: '▲', class: 'rank-up', change: previousRank - currentRank };
         } else if (currentRank > previousRank) {
-            return { indicator: '▼', class: 'rank-down', change: currentRank - previousRank };
+            return { indicator: '▼', class: 'rank-down', change: previousRank - currentRank };
         } else {
-            return { indicator: '-', class: 'rank-stable', change: 0 };
+            return { indicator: '▬', class: 'rank-stable', change: 0 };
         }
     }
 

@@ -462,15 +462,21 @@ body {
 
 /* Rank indicators */
 .rank-up { 
-    color: var(--accent-green); 
-    text-shadow: 0 0 10px var(--accent-green);
+    color: var(--success-color); 
+    text-shadow: 0 0 10px var(--success-color);
 } 
 .rank-down { 
-    color: var(--accent-red);
-    text-shadow: 0 0 10px var(--accent-red);
+    color: var(--danger-color);
+    text-shadow: 0 0 10px var(--danger-color);
 } 
 .rank-stable { 
-    color: #6b7280; 
+    color: var(--warning-color);
+    text-shadow: 0 0 10px var(--warning-color);
+}
+.rank-new {
+    color: var(--glow-color);
+    text-shadow: 0 0 10px var(--glow-color);
+    animation: pulse-ring 2s ease-in-out infinite;
 }
 
 /* Navigation */

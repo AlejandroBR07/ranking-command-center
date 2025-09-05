@@ -4,7 +4,7 @@ const CONFIG = {
     WEBHOOK_URL: 'https://aldeia0225.app.n8n.cloud/webhook/a83cd7e6-b8e4-49ea-b524-9780b993c9ad',
     
     // Timing configurations
-    DATA_REFRESH_INTERVAL: 3600 * 1000, // 1 hour
+    DATA_REFRESH_INTERVAL: 30 * 60 * 1000, // 30 minutes
     VIEW_ROTATION_INTERVAL: 15 * 1000,  // 15 seconds
     
     // Currency formatting - Changed to USD
@@ -29,11 +29,11 @@ const CONFIG = {
             primary: '#38BDF8',
             secondary: '#06B6D4',
             accent: '#FFD700',
-            success: '#22C55E',
-            warning: '#F59E0B',
-            danger: '#EF4444',
-            dollarGods: '#FFD700',
-            eliteSquad: '#38BDF8'
+            success: '#10B981', // Usando o verde mais vibrante do seu tema
+            warning: '#F59E0B', // Mantido
+            danger: '#EF4444', // Mantido
+            dollarGods: '#FFD700', // Mantido
+            eliteSquad: '#38BDF8' // Mantido
         },
         breakpoints: {
             mobile: 768,
@@ -66,24 +66,6 @@ const CONFIG = {
         'Natan': 'Natan', 
         'Lucas Vinicius': 'Lucas'
     },
-    
-    // Visual settings
-    COLORS: {
-        primary: '#38BDF8',
-        secondary: '#06D6A0',
-        dollarGods: '#FFD700',
-        eliteSquad: '#38BDF8',
-        success: '#10B981',
-        danger: '#EF4444',
-        warning: '#F59E0B'
-    },
-    
-    // Animation settings
-    ANIMATIONS: {
-        fadeInDelay: 100,
-        slideTransition: 700,
-        highlightDuration: 2000
-    }
 };
 
 // Export for use in other modules

@@ -26,14 +26,67 @@ class Renderer {
                             }
                         </div>
                     </div>
-                    <div class="kpi-container" style="display: block; width: 100%;">
-                        <div class="kpi-card" style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem; width: 100%; display: block; float: none; clear: both;">
-                            <p class="kpi-label" style="color: #9CA3AF; margin: 0 0 0.5rem 0; font-size: 0.875rem;">Total em Depósitos</p>
-                            <p class="currency-value" style="font-size: 1.8rem; font-weight: 900; color: #3B82F6; margin: 0;">${RankingUtils.formatCurrency(dg.totalDeposito)}</p>
+                    <div class="kpi-container" style="display: block; width: 100%; margin: 0 auto; max-width: 300px;">
+                        <div class="kpi-card" style="
+                            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+                            border: 1px solid rgba(59, 130, 246, 0.4);
+                            border-radius: 12px;
+                            padding: 1.25rem 1.5rem;
+                            margin-bottom: 1rem;
+                            width: 100%;
+                            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+                            transition: all 0.3s ease;
+                        ">
+                            <p class="kpi-label" style="
+                                color: #9CA3AF;
+                                margin: 0 0 0.5rem 0;
+                                font-size: 0.875rem;
+                                letter-spacing: 0.5px;
+                                text-transform: uppercase;
+                                font-weight: 600;
+                            ">Total em Depósitos</p>
+                            <p class="currency-value" style="
+                                font-size: 1.8rem;
+                                font-weight: 900;
+                                color: #3B82F6;
+                                margin: 0;
+                                text-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+                                background: linear-gradient(135deg, #3B82F6, #60A5FA);
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                                background-clip: text;
+                                line-height: 1.2;
+                            ">${RankingUtils.formatCurrency(dg.totalDeposito)}</p>
                         </div>
-                        <div class="kpi-card" style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 16px; padding: 1.5rem; width: 100%; display: block; float: none; clear: both;">
-                            <p class="kpi-label" style="color: #9CA3AF; margin: 0 0 0.5rem 0; font-size: 0.875rem;">Ativações</p>
-                            <p class="kpi-value" style="font-size: 1.8rem; font-weight: 900; color: #10B981; margin: 0;">${dg.activationCount}</p>
+                        <div class="kpi-card" style="
+                            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+                            border: 1px solid rgba(16, 185, 129, 0.4);
+                            border-radius: 12px;
+                            padding: 1.25rem 1.5rem;
+                            width: 100%;
+                            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+                            transition: all 0.3s ease;
+                        ">
+                            <p class="kpi-label" style="
+                                color: #9CA3AF;
+                                margin: 0 0 0.5rem 0;
+                                font-size: 0.875rem;
+                                letter-spacing: 0.5px;
+                                text-transform: uppercase;
+                                font-weight: 600;
+                            ">Ativações</p>
+                            <p class="kpi-value" style="
+                                font-size: 1.8rem;
+                                font-weight: 900;
+                                color: #10B981;
+                                margin: 0;
+                                text-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+                                background: linear-gradient(135deg, #10B981, #34D399);
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                                background-clip: text;
+                                line-height: 1.2;
+                            ">${dg.activationCount}</p>
                         </div>
                     </div>
                     </div>
@@ -52,14 +105,67 @@ class Renderer {
                             }
                         </div>
                     </div>
-                    <div class="kpi-container" style="display: block; width: 100%;">
-                        <div class="kpi-card" style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem; width: 100%; display: block; float: none; clear: both;">
-                            <p class="kpi-label" style="color: #9CA3AF; margin: 0 0 0.5rem 0; font-size: 0.875rem;">Total em Depósitos</p>
-                            <p class="currency-value" style="font-size: 1.8rem; font-weight: 900; color: #3B82F6; margin: 0;">${RankingUtils.formatCurrency(es.totalDeposito)}</p>
+                    <div class="kpi-container" style="display: block; width: 100%; margin: 0 auto; max-width: 300px;">
+                        <div class="kpi-card" style="
+                            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+                            border: 1px solid rgba(59, 130, 246, 0.4);
+                            border-radius: 12px;
+                            padding: 1.25rem 1.5rem;
+                            margin-bottom: 1rem;
+                            width: 100%;
+                            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+                            transition: all 0.3s ease;
+                        ">
+                            <p class="kpi-label" style="
+                                color: #9CA3AF;
+                                margin: 0 0 0.5rem 0;
+                                font-size: 0.875rem;
+                                letter-spacing: 0.5px;
+                                text-transform: uppercase;
+                                font-weight: 600;
+                            ">Total em Depósitos</p>
+                            <p class="currency-value" style="
+                                font-size: 1.8rem;
+                                font-weight: 900;
+                                color: #3B82F6;
+                                margin: 0;
+                                text-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+                                background: linear-gradient(135deg, #3B82F6, #60A5FA);
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                                background-clip: text;
+                                line-height: 1.2;
+                            ">${RankingUtils.formatCurrency(es.totalDeposito)}</p>
                         </div>
-                        <div class="kpi-card" style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 16px; padding: 1.5rem; width: 100%; display: block; float: none; clear: both;">
-                            <p class="kpi-label" style="color: #9CA3AF; margin: 0 0 0.5rem 0; font-size: 0.875rem;">Ativações</p>
-                            <p class="kpi-value" style="font-size: 1.8rem; font-weight: 900; color: #10B981; margin: 0;">${es.activationCount}</p>
+                        <div class="kpi-card" style="
+                            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+                            border: 1px solid rgba(16, 185, 129, 0.4);
+                            border-radius: 12px;
+                            padding: 1.25rem 1.5rem;
+                            width: 100%;
+                            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+                            transition: all 0.3s ease;
+                        ">
+                            <p class="kpi-label" style="
+                                color: #9CA3AF;
+                                margin: 0 0 0.5rem 0;
+                                font-size: 0.875rem;
+                                letter-spacing: 0.5px;
+                                text-transform: uppercase;
+                                font-weight: 600;
+                            ">Ativações</p>
+                            <p class="kpi-value" style="
+                                font-size: 1.8rem;
+                                font-weight: 900;
+                                color: #10B981;
+                                margin: 0;
+                                text-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+                                background: linear-gradient(135deg, #10B981, #34D399);
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                                background-clip: text;
+                                line-height: 1.2;
+                            ">${es.activationCount}</p>
                         </div>
                     </div>
                     </div>
@@ -103,10 +209,12 @@ class Renderer {
                 const podiumClass = rank <= 3 && isOverall ? `podium-${rank}` : '';
                 const highlightClass = rankChange.change !== 0 ? 'highlight-change' : '';
                 
-                const rankIndicator = rankChange.change > 0 ? `<span class="text-green-400 font-bold text-lg">↑${rankChange.change}</span>` : 
-                                  rankChange.change < 0 ? `<span class="text-red-400 font-bold text-lg">↓${Math.abs(rankChange.change)}</span>` : 
-                                  `<span class="text-gray-400 font-bold text-lg">-</span>`;
-                
+                // Usando o indicador e a classe retornados diretamente do dataProcessor
+                const rankIndicatorHTML = `
+                    <span class="rank-indicator ${rankChange.class} w-10 text-center font-bold text-lg">
+                        ${rankChange.indicator}
+                    </span>
+                `;
                 listHTML += `
                     <div class="flex items-center bg-black/20 p-2 rounded-xl transition duration-300 ${highlightClass} leaderboard-item">
                         <span class="text-md font-bold text-gray-400 w-8 text-center">${rank}º</span>
@@ -114,7 +222,7 @@ class Renderer {
                             ${initials}
                         </div>
                         <span class="font-semibold text-gray-200 broker-name">${broker.brokerName}</span>
-                        ${rankIndicator}
+                        ${rankIndicatorHTML}
                         <span class="text-sm font-semibold text-gray-300 ml-2 value-text text-right">${valueText}</span>
                     </div>
                 `;
