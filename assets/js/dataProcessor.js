@@ -237,10 +237,25 @@ class DataProcessor {
     }
 
     getRankChange(brokerName, currentRank, rankingType) {
-        const previousRank = this.previousRankings[rankingType]?.get(brokerName);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        // Check if the broker is new (first deposit ever was today)
+        const allEntriesForBroker = this.rawData.filter(item => (CONFIG.BROKER_MAP[RankingUtils.getValue(item, 'Nome')] || RankingUtils.getValue(item, 'Nome')) === brokerName);
+        const firstDepositDate = allEntriesForBroker
+            .map(item => RankingUtils.parseDate(RankingUtils.getValue(item, 'Data')))
+            .filter(Boolean)
+            .sort((a, b) => a - b)[0];
         
-        if (!previousRank) {
+        const isNewToday = firstDepositDate && firstDepositDate.setHours(0, 0, 0, 0) === today.getTime();
+
+        if (isNewToday) {
             return { indicator: '⭐', class: 'rank-new', isNew: true, change: 0 };
+        }
+
+        const previousRank = this.previousRankings[rankingType]?.get(brokerName);
+        if (!previousRank) {
+            return { indicator: '▬', class: 'rank-stable', isNew: false, change: 0 };
         }
         
         if (currentRank < previousRank) {

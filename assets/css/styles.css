@@ -476,7 +476,18 @@ body {
 .rank-new {
     color: var(--glow-color);
     text-shadow: 0 0 10px var(--glow-color);
-    animation: pulse-ring 2s ease-in-out infinite;
+}
+
+/* New collaborator tag style */
+.new-collaborator-tag {
+    background-color: var(--accent-purple);
+    color: white;
+    font-size: 0.6rem; /* 10px */
+    font-weight: 700;
+    padding: 3px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    line-height: 1;
 }
 
 /* Navigation */

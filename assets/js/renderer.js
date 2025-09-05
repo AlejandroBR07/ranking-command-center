@@ -209,12 +209,19 @@ class Renderer {
                 const podiumClass = rank <= 3 && isOverall ? `podium-${rank}` : '';
                 const highlightClass = rankChange.change !== 0 ? 'highlight-change' : '';
                 
-                // Usando o indicador e a classe retornados diretamente do dataProcessor
-                const rankIndicatorHTML = `
-                    <span class="rank-indicator ${rankChange.class} w-10 text-center font-bold text-lg">
-                        ${rankChange.indicator}
-                    </span>
-                `;
+                let rankIndicatorHTML;
+                if (rankChange.isNew) {
+                    rankIndicatorHTML = `
+                        <div class="flex items-center justify-center gap-2 ml-auto mr-2">
+                            <span class="rank-indicator ${rankChange.class} font-bold text-lg">${rankChange.indicator}</span>
+                            <span class="new-collaborator-tag">Novo</span>
+                        </div>`;
+                } else {
+                    rankIndicatorHTML = `
+                        <span class="rank-indicator ${rankChange.class} w-10 text-center font-bold text-lg ml-auto mr-2">
+                            ${rankChange.indicator}
+                        </span>`;
+                }
                 listHTML += `
                     <div class="flex items-center bg-black/20 p-2 rounded-xl transition duration-300 ${highlightClass} leaderboard-item">
                         <span class="text-md font-bold text-gray-400 w-8 text-center">${rank}º</span>
@@ -223,7 +230,7 @@ class Renderer {
                         </div>
                         <span class="font-semibold text-gray-200 broker-name">${broker.brokerName}</span>
                         ${rankIndicatorHTML}
-                        <span class="text-sm font-semibold text-gray-300 ml-2 value-text text-right">${valueText}</span>
+                        <span class="text-sm font-semibold text-gray-300 value-text text-right w-28">${valueText}</span>
                     </div>
                 `;
             });
