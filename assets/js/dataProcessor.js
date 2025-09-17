@@ -51,34 +51,22 @@ class DataProcessor {
     getMockData() {
         return [
             {
-                'Nome': 'João Silva',
-                'Valor Depósito': '1500,00',
-                'Data': '2025-07-15',
-                'Ativação?': 'Ativação'
+                'Broker': 'Felipe Pauluk',
+                'Depósito': '100.46',
+                'Data': '2025-01-06',
+                'Ativação': 'Não Ativação'
             },
             {
-                'Nome': 'Maria Santos',
-                'Valor Depósito': '2300,50',
-                'Data': '2025-07-20',
-                'Ativação?': 'Ativação'
+                'Broker': 'Felipe Pauluk',
+                'Depósito': '100.74',
+                'Data': '2025-06-23',
+                'Ativação': 'Não Ativação'
             },
             {
-                'Nome': 'Pedro Costa',
-                'Valor Depósito': '1800,75',
-                'Data': '2025-07-25',
-                'Ativação?': 'Não'
-            },
-            {
-                'Nome': 'Ana Oliveira',
-                'Valor Depósito': '3200,00',
-                'Data': '2025-08-01',
-                'Ativação?': 'Ativação'
-            },
-            {
-                'Nome': 'Carlos Mendes',
-                'Valor Depósito': '950,25',
-                'Data': '2025-08-05',
-                'Ativação?': 'Não'
+                'Broker': 'Felipe Pauluk',
+                'Depósito': '918.85',
+                'Data': '2025-08-31',
+                'Ativação': 'Não Ativação'
             }
         ];
     }
@@ -93,7 +81,7 @@ class DataProcessor {
         return this.rawData.map(item => ({
             ...item,
             parsedDate: RankingUtils.parseDate(RankingUtils.getValue(item, 'Data')),
-            team: RankingUtils.getTeamByBroker(RankingUtils.getValue(item, 'Nome'))
+            team: RankingUtils.getTeamByBroker(RankingUtils.getValue(item, 'Broker'))
         })).filter(item => {
             if (!item.parsedDate) return false; // Ignore items without a valid date
             
@@ -118,7 +106,7 @@ class DataProcessor {
 
     calculateRankings(data) {
         const summary = data.reduce((acc, item) => {
-            const brokerName = RankingUtils.getValue(item, 'Nome');
+            const brokerName = RankingUtils.getValue(item, 'Broker');
             const shortName = CONFIG.BROKER_MAP[brokerName] || brokerName;
             if (!shortName) return acc;
             
@@ -133,13 +121,13 @@ class DataProcessor {
             }
             
             // Use 'Valor Depósito' from webhook - accept ALL deposits, no validation filter
-            const depositValue = RankingUtils.parseCurrency(RankingUtils.getValue(item, 'Valor Depósito'));
+            const depositValue = RankingUtils.parseCurrency(RankingUtils.getValue(item, 'Depósito'));
             if (depositValue > 0) {
                 acc[shortName].totalDeposito += depositValue;
             }
             
             // Use 'Ativação?' from webhook - only count 'Ativação' as activated
-            const ativacao = RankingUtils.getValue(item, 'Ativação?');
+            const ativacao = RankingUtils.getValue(item, 'Ativação');
             if (ativacao === 'Ativação') {
                 acc[shortName].activationCount++;
             }
@@ -177,12 +165,12 @@ class DataProcessor {
             }
             
             // Accept ALL deposits, no validation filter
-            const depositValue = RankingUtils.parseCurrency(RankingUtils.getValue(item, 'Valor Depósito'));
+            const depositValue = RankingUtils.parseCurrency(RankingUtils.getValue(item, 'Depósito'));
             if (depositValue > 0) {
                 acc[item.team].totalDeposito += depositValue;
             }
             
-            if (RankingUtils.getValue(item, 'Ativação?') === 'Ativação') {
+            if (RankingUtils.getValue(item, 'Ativação') === 'Ativação') {
                 acc[item.team].activationCount++;
             }
             
@@ -241,7 +229,7 @@ class DataProcessor {
         today.setHours(0, 0, 0, 0);
 
         // Check if the broker is new (first deposit ever was today)
-        const allEntriesForBroker = this.rawData.filter(item => (CONFIG.BROKER_MAP[RankingUtils.getValue(item, 'Nome')] || RankingUtils.getValue(item, 'Nome')) === brokerName);
+        const allEntriesForBroker = this.rawData.filter(item => (CONFIG.BROKER_MAP[RankingUtils.getValue(item, 'Broker')] || RankingUtils.getValue(item, 'Broker')) === brokerName);
         const firstDepositDate = allEntriesForBroker
             .map(item => RankingUtils.parseDate(RankingUtils.getValue(item, 'Data')))
             .filter(Boolean)
@@ -269,7 +257,7 @@ class DataProcessor {
 
     getChartData(data) {
         const summary = data.reduce((acc, item) => {
-            const brokerName = RankingUtils.getValue(item, 'Nome');
+            const brokerName = RankingUtils.getValue(item, 'Broker');
             const shortName = CONFIG.BROKER_MAP[brokerName] || brokerName;
             
             if (!acc[shortName]) {
@@ -281,7 +269,7 @@ class DataProcessor {
                 };
             }
             
-            const depositValue = RankingUtils.parseCurrency(RankingUtils.getValue(item, 'Valor Depósito'));
+            const depositValue = RankingUtils.parseCurrency(RankingUtils.getValue(item, 'Depósito'));
             if (depositValue > 0) {
                 acc[shortName].totalDeposito += depositValue;
                 acc[shortName].depositoCount++;

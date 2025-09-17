@@ -1,7 +1,7 @@
 // Configuration for the Ranking Command Center
 const CONFIG = {
     // N8N Webhook URL
-    WEBHOOK_URL: 'https://aldeia0225.app.n8n.cloud/webhook/a83cd7e6-b8e4-49ea-b524-9780b993c9ad',
+    WEBHOOK_URL: 'https://n8n.tradestars.com.br/webhook/3bc5da45-4c57-424d-8c2f-42cda5fa8418',
     
     // Timing configurations
     DATA_REFRESH_INTERVAL: 30 * 60 * 1000, // 30 minutes
