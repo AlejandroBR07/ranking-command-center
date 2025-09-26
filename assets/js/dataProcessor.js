@@ -8,7 +8,6 @@ class DataProcessor {
 
     async fetchData() {
         try {
-            console.log('Fetching data from:', CONFIG.WEBHOOK_URL);
             const response = await fetch(CONFIG.WEBHOOK_URL, {
                 method: 'GET',
                 headers: {
@@ -16,21 +15,14 @@ class DataProcessor {
                     'Content-Type': 'application/json'
                 }
             });
-            
-            console.log('Response status:', response.status);
-            console.log('Response headers:', response.headers);
-            
+
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
             }
-            
+
             const data = await response.json();
-            console.log('Raw data received:', data);
-            console.log('Data type:', typeof data, 'Is array:', Array.isArray(data));
-            console.log('Primeiro item do array:', data[0]);
-            
+
             this.rawData = Array.isArray(data) ? data : [];
-            console.log('Processed rawData length:', this.rawData.length);
             
             return this.rawData;
         } catch (error) {
@@ -78,19 +70,22 @@ class DataProcessor {
         const startOfWeek = new Date(today);
         startOfWeek.setDate(today.getDate() - today.getDay() + (today.getDay() === 0 ? -6 : 1));
         const minDate = new Date(2025, 6, 1); // July 1, 2025
-        
+
         return this.rawData.map(item => ({
             ...item,
             parsedDate: RankingUtils.parseDate(RankingUtils.getValue(item, 'Data')),
             team: RankingUtils.getTeamByBroker(RankingUtils.getValue(item, 'Broker'))
         })).filter(item => {
-            if (!item.parsedDate) return false; // Ignore items without a valid date
-            
+            // Allow items without valid date for 'all' period
+            if (!item.parsedDate) {
+                return selectedPeriod === 'all';
+            }
+
             const itemDate = new Date(item.parsedDate.getFullYear(), item.parsedDate.getMonth(), item.parsedDate.getDate());
-            
+
             // Always filter out dates before July 2025
             if (itemDate < minDate) return false;
-            
+
             // Apply the selected period filter
             switch (selectedPeriod) {
                 case 'all':
@@ -184,11 +179,7 @@ class DataProcessor {
             kpis[team].memberCount = teamMembers.length;
             
             // Only track total deposits
-            console.log(`📊 Team ${team} total deposits:`, {
-                totalDeposit: kpis[team].totalDeposito,
-                activations: kpis[team].activationCount
-            });
-            
+
             // Ensure all required properties exist
             kpis[team].totalDeposito = kpis[team].totalDeposito || 0;
             kpis[team].activationCount = kpis[team].activationCount || 0;
