@@ -27,6 +27,7 @@ class DataProcessor {
             const data = await response.json();
             console.log('Raw data received:', data);
             console.log('Data type:', typeof data, 'Is array:', Array.isArray(data));
+            console.log('Primeiro item do array:', data[0]);
             
             this.rawData = Array.isArray(data) ? data : [];
             console.log('Processed rawData length:', this.rawData.length);
